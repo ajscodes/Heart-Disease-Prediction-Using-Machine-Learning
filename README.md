@@ -70,3 +70,43 @@ The following models were implemented and evaluated:
 ---
 
 ## 🔄 System Architecture
+
+---
+
+## 📈 Project Workflow
+1. Data collection and preprocessing  
+2. Exploratory Data Analysis (EDA)  
+3. Feature engineering  
+4. Model training and evaluation  
+5. Model comparison  
+6. API development using FastAPI  
+7. Frontend integration using Next.js  
+
+---
+
+## ✅ Results
+- Accurate prediction of heart disease risk  
+- Random Forest provided the highest accuracy  
+- Clean separation of frontend, backend, and ML logic  
+
+---
+
+## 🚀 Future Scope
+- Add advanced ML models (SVM, XGBoost)  
+- Deploy application using Docker and cloud platforms  
+- Integrate dashboards and visual analytics  
+- Implement authentication and prediction history  
+
+---
+
+## 👨‍💻 Author
+**Joy**  
+Student | Machine Learning Enthusiast  
+
+---
+
+## ⭐ Highlights
+- End-to-end Machine Learning pipeline  
+- Full-stack implementation  
+- Real-world healthcare problem  
+- Resume and LinkedIn ready project  
