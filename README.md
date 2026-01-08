@@ -96,7 +96,7 @@ The following models were implemented and evaluated:
 ---
 
 ## 👨‍💻 Author
-**Joy**  
+**Ayush Maradia**  
 Student | Machine Learning Enthusiast  
 
 ---
