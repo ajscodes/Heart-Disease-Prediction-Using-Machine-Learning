@@ -71,6 +71,14 @@ The following models were implemented and evaluated:
 
 ## 🔄 System Architecture
 
+Next.js User Interface
+↓
+FastAPI Backend (api.py)
+↓
+Trained Machine Learning Models
+↓
+Prediction Output
+
 ---
 
 ## 📈 Project Workflow
