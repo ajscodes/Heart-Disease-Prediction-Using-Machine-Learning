@@ -69,18 +69,6 @@ The following models were implemented and evaluated:
 
 ---
 
-## 🔄 System Architecture
-
-Next.js User Interface
-↓
-FastAPI Backend (api.py)
-↓
-Trained Machine Learning Models
-↓
-Prediction Output
-
----
-
 ## 📈 Project Workflow
 1. Data collection and preprocessing  
 2. Exploratory Data Analysis (EDA)  
