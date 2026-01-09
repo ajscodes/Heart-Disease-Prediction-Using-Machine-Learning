@@ -67,7 +67,7 @@ export function PredictionForm() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("http://localhost:8000/predict", {
+      const response = await fetch("https://heart-disease-prediction-using-machine-d7ti.onrender.com/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
