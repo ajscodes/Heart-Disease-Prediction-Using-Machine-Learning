@@ -64,7 +64,7 @@ export function Hero() {
 
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { value: "2K+", label: "Predictions Made" },
+            { value: "70K+", label: "Patient Records" },
             { value: "73%", label: "Model Accuracy" },
             { value: "11", label: "Risk Factors" },
             { value: "24/7", label: "Availability" },
