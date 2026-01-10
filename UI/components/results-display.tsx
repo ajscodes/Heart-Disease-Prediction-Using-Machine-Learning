@@ -109,8 +109,19 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     const { jsPDF } = await import("jspdf")
     const doc = new jsPDF()
     const pageWidth = doc.internal.pageSize.getWidth()
+    const pageHeight = doc.internal.pageSize.getHeight()
+    const bottomMargin = 30
     const margin = 20
     let yPos = 20
+
+    const checkPageBreak = (spaceNeeded: number = 10) => {
+      if (yPos + spaceNeeded > pageHeight - bottomMargin) {
+        doc.addPage()
+        yPos = 20
+      }
+    }
+
+
 
     // Helper function for centered text
     const centerText = (text: string, y: number, fontSize = 12) => {
@@ -172,6 +183,7 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     doc.setTextColor(0, 0, 0)
     doc.setFont("helvetica", "bold")
     doc.setFontSize(14)
+    checkPageBreak(30)
     doc.text("Patient Information", margin, yPos)
     yPos += 3
     doc.setDrawColor(20, 184, 166)
@@ -204,6 +216,7 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     // Clinical Measurements Section
     doc.setFont("helvetica", "bold")
     doc.setFontSize(14)
+    checkPageBreak(30)
     doc.text("Clinical Measurements", margin, yPos)
     yPos += 3
     doc.line(margin, yPos, pageWidth - margin, yPos)
@@ -230,6 +243,7 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     // Lifestyle Factors Section
     doc.setFont("helvetica", "bold")
     doc.setFontSize(14)
+    checkPageBreak(30)
     doc.text("Lifestyle Factors", margin, yPos)
     yPos += 3
     doc.line(margin, yPos, pageWidth - margin, yPos)
@@ -254,6 +268,7 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     if (result.factors.length > 0) {
       doc.setFont("helvetica", "bold")
       doc.setFontSize(14)
+      checkPageBreak(30)
       doc.text("Identified Risk Factors", margin, yPos)
       yPos += 3
       doc.line(margin, yPos, pageWidth - margin, yPos)
@@ -262,6 +277,7 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
       doc.setFontSize(11)
       doc.setFont("helvetica", "normal")
       result.factors.forEach((factor) => {
+        checkPageBreak(8)
         doc.setFillColor(239, 68, 68)
         doc.circle(margin + 3, yPos - 2, 1.5, "F")
         doc.text(factor, margin + 10, yPos)
@@ -273,6 +289,7 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     // Recommendations Section
     doc.setFont("helvetica", "bold")
     doc.setFontSize(14)
+    checkPageBreak(30)
     doc.text("Recommendations", margin, yPos)
     yPos += 3
     doc.line(margin, yPos, pageWidth - margin, yPos)
@@ -288,15 +305,18 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     ]
 
     recommendations.forEach((rec) => {
+      const lines = doc.splitTextToSize(rec, pageWidth - 2 * margin - 15)
+      checkPageBreak(lines.length * 6)   
       doc.setFillColor(20, 184, 166)
       doc.circle(margin + 3, yPos - 2, 1.5, "F")
-      const lines = doc.splitTextToSize(rec, pageWidth - 2 * margin - 15)
       doc.text(lines, margin + 10, yPos)
       yPos += lines.length * 5 + 3
-    })
+});
+
 
     // Disclaimer
-    yPos = doc.internal.pageSize.getHeight() - 35
+    checkPageBreak(40)
+    yPos = pageHeight - 35
     doc.setFillColor(245, 245, 245)
     doc.rect(margin, yPos - 5, pageWidth - 2 * margin, 25, "F")
     doc.setFontSize(8)
@@ -309,7 +329,11 @@ export function ResultsDisplay({ result, formData, onReset }: ResultsDisplayProp
     // Footer
     doc.setFontSize(9)
     doc.setTextColor(150, 150, 150)
-    centerText("CardioPredict - Cardiovascular Disease Risk Prediction", doc.internal.pageSize.getHeight() - 8, 9)
+    centerText(
+      "CardioPredict - Cardiovascular Disease Risk Prediction",
+      pageHeight - 8,
+      9
+    )
 
     // Save the PDF
     doc.save(`CardioPredict_Report_${new Date().toISOString().split("T")[0]}.pdf`)
