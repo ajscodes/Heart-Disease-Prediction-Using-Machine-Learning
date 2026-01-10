@@ -87,22 +87,20 @@ The following models were implemented and evaluated:
 
 ---
 
-## 🚀 Future Scope
-- Add advanced ML models (SVM, XGBoost)  
-- Deploy application using Docker and cloud platforms  
-- Integrate dashboards and visual analytics  
-- Implement authentication and prediction history  
-
----
-
 ## 👨‍💻 Author
-**Ayush Maradia**  
+**Ayush J. Maradia**  
 Student | Machine Learning Enthusiast  
 
 ---
 
 ## ⭐ Highlights
-- End-to-end Machine Learning pipeline  
+- End-to-end Machine Learning pipeline          
 - Full-stack implementation  
-- Real-world healthcare problem  
-- Resume and LinkedIn ready project  
+- Real-world healthcare problem
+
+---
+
+## 🔗 Live Demo
+https://heart-disease-prediction-using-mach.vercel.app/
+
+
